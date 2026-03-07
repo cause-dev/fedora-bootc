@@ -3,17 +3,17 @@ set -ouex pipefail
 
 # 1. Define Groups to install
 GROUPS=(
-    "base-graphical"
-    "container-management"
-    "core"
-    "fonts"
-    "gnome-desktop"
-    "hardware-support"
-    "multimedia"
-    "networkmanager-submodules"
-    "desktop-accessibility"
-    "guest-desktop-agents"
-    "workstation-product"
+    "@base-graphical"
+    "@container-management"
+    "@core"
+    "@fonts"
+    "@gnome-desktop"
+    "@hardware-support"
+    "@multimedia"
+    "@networkmanager-submodules"
+    "@desktop-accessibility"
+    "@guest-desktop-agents"
+    "@workstation-product"
 )
 
 # 2. Define Individual Packages to install
@@ -46,7 +46,7 @@ EXCLUDES=(
     simple-scan
     baobab
     yelp
-    decibles
+    decibels
 )
 
 # Build the dnf command
