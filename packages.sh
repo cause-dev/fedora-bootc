@@ -48,6 +48,7 @@ EXCLUDES=(
     baobab
     yelp
     decibels
+    unoconv
 )
 
 # Build the dnf command
