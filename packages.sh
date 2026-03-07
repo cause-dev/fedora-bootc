@@ -57,7 +57,7 @@ for pkg in "${EXCLUDES[@]}"; do
 done
 
 # Execute installation
-dnf -y group install "${GROUPS[@]}" "${EXCLUDE_FLAGS[@]}"
+dnf -y install "${GROUPS[@]}" "${EXCLUDE_FLAGS[@]}"
 dnf -y install "${PACKAGES[@]}"
 
 # Cleanup
