@@ -2,7 +2,7 @@
 set -ouex pipefail
 
 # 1. Define Groups to install
-GROUPS=(
+MY_GROUPS=(
     "@base-graphical"
     "@container-management"
     "@core"
@@ -17,7 +17,7 @@ GROUPS=(
 )
 
 # 2. Define Individual Packages to install
-PACKAGES=(
+MY_PACKAGES=(
     fish
     distrobox
     android-tools
@@ -57,8 +57,8 @@ for pkg in "${EXCLUDES[@]}"; do
 done
 
 # Execute installation
-dnf -y install "${GROUPS[@]}" "${EXCLUDE_FLAGS[@]}" --skip-unavailable
-dnf -y install "${PACKAGES[@]}" --skip-unavailable
+dnf -y install "${MY_GROUPS[@]}" "${EXCLUDE_FLAGS[@]}"
+dnf -y install "${MY_PACKAGES[@]}"
 
 # Cleanup
 dnf -y clean all
