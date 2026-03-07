@@ -26,6 +26,7 @@ MY_PACKAGES=(
 # 3. Define Packages to EXCLUDE (Bloatware)
 EXCLUDES=(
     gnome-boxes
+    libreoffice*
     gnome-connections
     gnome-software*
     gnome-text-editor
