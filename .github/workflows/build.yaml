@@ -33,4 +33,4 @@ jobs:
 
       # 3. Push the finished image to your registry
       - name: Push Image
-        run: podman push --compression-format=zstd:chunked ${{ env.IMAGE_TAG }}
+        run: podman push --format oci --compression-format zstd:chunked ${{ env.IMAGE_TAG }}
