@@ -21,6 +21,8 @@ MY_PACKAGES=(
     fish
     distrobox
     android-tools
+    just
+    chezmoi
 )
 
 # 3. Define Packages to EXCLUDE (Bloatware)
@@ -64,3 +66,11 @@ dnf -y install "${MY_PACKAGES[@]}"
 
 # Cleanup
 dnf -y clean all
+
+
+# Remove the Fedora Flatpak repo (if it exists in the base image)
+RUN flatpak remote-delete fedora --force || true
+
+# Add the Flathub repo system-wide
+RUN flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+
