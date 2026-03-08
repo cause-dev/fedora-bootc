@@ -67,10 +67,5 @@ dnf -y install "${MY_PACKAGES[@]}"
 # Cleanup
 dnf -y clean all
 
-
-# Remove the Fedora Flatpak repo (if it exists in the base image)
-flatpak remote-delete fedora --force || true
-
-# Add the Flathub repo system-wide
-flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-
+# Remove all logs, temporary files, and runtime data
+rm -rf /tmp/* /var/tmp/* /var/log/* /run/*
