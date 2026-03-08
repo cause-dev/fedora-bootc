@@ -68,4 +68,6 @@ dnf -y install "${MY_PACKAGES[@]}"
 dnf -y clean all
 
 # Remove all logs, temporary files, and runtime data
-rm -rf /tmp/* /var/tmp/* /var/log/* /run/*
+rm -rf /tmp/* /var/tmp/* /var/log/dnf* /var/log/anaconda
+rm -rf /run/dnf /run/lock
+find /var/log -type f -exec truncate -s 0 {} \;
