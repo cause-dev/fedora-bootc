@@ -1,11 +1,12 @@
 # Start from the official minimal Fedora Bootc
 FROM quay.io/fedora/fedora-bootc:latest
 
-COPY repo.sh /
-RUN chmod +x /repo.sh && /repo.sh && rm /repo.sh
+RUN --mount=type=bind,source=repos.sh,target=/tmp/repos.sh \
+    chmod +x /tmp/repos.sh && /tmp/repos.sh
 
-COPY packages.sh /
-RUN chmod +x /packages.sh && /packages.sh && rm /packages.sh
+RUN --mount=type=bind,source=packages.sh,target=/tmp/packages.sh \
+    chmod +x /tmp/packages.sh && /tmp/packages.sh
+
 
 # 2. Enable Desktop Services
 RUN systemctl set-default graphical.target && \
