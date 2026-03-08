@@ -69,8 +69,8 @@ dnf -y clean all
 
 
 # Remove the Fedora Flatpak repo (if it exists in the base image)
-RUN flatpak remote-delete fedora --force || true
+flatpak remote-delete fedora --force || true
 
 # Add the Flathub repo system-wide
-RUN flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
