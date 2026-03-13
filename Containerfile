@@ -28,7 +28,7 @@ COPY --chmod=0755 ./system/usr__local__bin/* /usr/local/bin/
 COPY --chmod=0644 ./system/usr__lib__credstore__home.create.admin /usr/lib/credstore/home.create.admin
 
 COPY --chmod=0755 ./scripts/* /tmp/scripts/
-RUN /tmp/repos
+RUN /tmp/scripts/repos
 RUN /tmp/scripts/config-users
 RUN /tmp/scripts/config-authselect && rm -r /tmp/scripts
 
