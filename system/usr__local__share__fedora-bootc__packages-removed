@@ -1,0 +1,28 @@
+####################################################
+# List of packages to remove from image
+####################################################
+
+# Remove gnome-software
+gnome-software*
+PackageKit-glib
+PackageKit-command-not-found
+
+# Remove libreoffice
+libreoffice*
+
+# Other useless apps
+showtime
+at
+
+# IPTables are deprecated
+iptables-services
+iptables-utils
+
+# Enhance logging, but heavy in resources - journalctl is better alternative
+rsyslog
+
+# Generates rescue initramfs image - Bootc already provides rollback image
+dracut-config-rescue
+
+# Remove DNF4
+dnf-data

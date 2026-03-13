@@ -1,0 +1,44 @@
+#!/bin/bash
+set -e
+
+###############################################
+# 1. Setup HOST (Identity)
+###############################################
+HOST_NAME="dev"
+echo "🌐 Setting hostname to $HOST_NAME..."
+hostnamectl set-hostname $HOST_NAME
+
+###############################################
+# 2. Setup USERS (systemd-homed)
+###############################################
+if command -v homectl >/dev/null 2>&1; then
+    echo "👤 Initializing user storage..."
+    homectl firstboot || echo "User already initialized, skipping..."
+fi
+
+###############################################
+# 3. Setup FIREWALL (GNOME/GSConnect)
+###############################################
+echo "🛡️ Configuring Firewall..."
+
+# Ensure the default zone is public
+if [ "$(firewall-cmd --get-default-zone)" != "public" ]; then 
+    firewall-cmd --set-default-zone=public
+fi
+
+# GNOME uses GSConnect, which uses the same protocol as KDE Connect.
+if ! firewall-cmd --list-services | grep -q kdeconnect; then
+    echo "📲 Opening ports for GSConnect (KDE Connect protocol)..."
+    firewall-cmd --add-service=kdeconnect --permanent
+fi
+
+firewall-cmd --reload
+
+###############################################
+# 4. GNOME Specifics (Optional but Recommended)
+###############################################
+# Force a sync of the hardware clock to avoid HTTPS/SSL errors on first boot
+echo "⏰ Syncing system clock..."
+timedatectl set-ntp true
+
+echo "✅ Firstboot setup complete!"

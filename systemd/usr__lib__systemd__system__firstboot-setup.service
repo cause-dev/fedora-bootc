@@ -1,0 +1,14 @@
+[Unit]
+Description=Initial System Identity and User Setup
+After=network-online.target
+Wants=network-online.target
+ConditionFirstBoot=yes
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/local/bin/firstboot-setup
+ImportCredential=home.create.*
+
+[Install]
+WantedBy=multi-user.target

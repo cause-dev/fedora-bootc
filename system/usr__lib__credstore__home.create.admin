@@ -1,0 +1,22 @@
+{
+    "userName" : "cause",
+    "realName" : "Cause",
+    "storage" : "luks",
+    "fileSystemType" : "btrfs",
+    "luksDiscard" : true,
+    "luksOfflineDiscard" : true,
+    "luksResizeMode" : "shrink-and-grow",
+    "rebalanceWeight" : false,
+    "uid" : 1000,
+    "gid" : 1000,
+    "shell" : "/usr/bin/fish",
+    "disposition" : "regular",
+    "memberOf" : [
+        "wheel"
+    ],
+    "privileged" : {
+        "hashedPassword" : [
+            "$y$j9T$WAReEVHrtN9au6ZsO8leU1$NpJlYe51PGqZstG0B8UaF09Ojzj01Gpip0o/tWdFhO7"
+        ]
+    }
+}

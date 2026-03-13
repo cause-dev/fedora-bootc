@@ -1,0 +1,22 @@
+####################################################
+# List of packages to install on top of base image
+####################################################
+
+# Essential Groups
+@core
+@hardware-support
+@networkmanager-submodules
+@container-management
+@base-graphical
+@fonts
+@multimedia
+@guest-desktop-agents
+@gnome-desktop
+@workstation-product
+
+# My Packages
+fish
+distrobox
+android-tools
+just
+chezmoi
