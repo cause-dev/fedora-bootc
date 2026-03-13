@@ -13,9 +13,6 @@ RUN jq -r .packages[] /usr/share/rpm-ostree/treefile.json > /usr/local/share/fed
 # INSTALL REPOS
 RUN dnf -y install dnf5-plugins
 
-COPY repos.sh /tmp/repos.sh
-RUN chmod +x /tmp/repos.sh && /tmp/repos.sh
-
 # INSTALL PACKAGES
 RUN grep -vE '^#' /usr/local/share/fedora-bootc/packages-added | xargs dnf -y install --allowerasing
 
@@ -31,6 +28,7 @@ COPY --chmod=0755 ./system/usr__local__bin/* /usr/local/bin/
 COPY --chmod=0644 ./system/usr__lib__credstore__home.create.admin /usr/lib/credstore/home.create.admin
 
 COPY --chmod=0755 ./scripts/* /tmp/scripts/
+RUN /tmp/repos
 RUN /tmp/scripts/config-users
 RUN /tmp/scripts/config-authselect && rm -r /tmp/scripts
 
